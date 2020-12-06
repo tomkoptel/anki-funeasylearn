@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.4.20"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
     id("io.gitlab.arturbosch.detekt") version "1.10.0"
+    id("com.github.gmazzo.buildconfig") version "2.0.2"
 }
 
 allprojects {
