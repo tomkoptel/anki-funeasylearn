@@ -2,6 +2,15 @@ plugins {
     kotlin("jvm")
     jacoco
     id("com.github.gmazzo.buildconfig")
+    id("com.squareup.sqldelight")
+}
+
+sqldelight {
+    // This will be the name of the generated database class.
+    database("WordsDb") {
+        packageName = "com.olderwold.anki.funeasylearn"
+        sourceFolders = listOf("sqldelight")
+    }
 }
 
 buildConfig {
@@ -20,6 +29,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.google.code.gson:gson:2.8.6")
+
+    implementation("com.squareup.sqldelight:sqlite-driver:1.4.3")
 
     testImplementation("org.amshove.kluent:kluent:1.4")
     testImplementation("com.airbnb.okreplay:okreplay:1.6.0")
