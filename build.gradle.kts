@@ -35,7 +35,6 @@ allprojects {
     }
 
     detekt {
-        config = rootProject.files("$rootDir/detekt.yml")
         reports {
             html {
                 enabled = true
