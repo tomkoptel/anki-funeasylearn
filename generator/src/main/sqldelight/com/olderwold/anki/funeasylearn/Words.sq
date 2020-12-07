@@ -14,3 +14,6 @@ CREATE TABLE WordTranslations(
   IndefiniteArticle INTEGER,
   PRIMARY KEY(WordID)
 );
+
+selectAll:
+SELECT * FROM WordTranslations ORDER BY WordID;

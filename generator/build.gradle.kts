@@ -32,7 +32,7 @@ dependencies {
 
     implementation("com.squareup.sqldelight:sqlite-driver:1.4.3")
 
-    testImplementation("org.amshove.kluent:kluent:1.4")
+    testImplementation("org.amshove.kluent:kluent:1.61")
     testImplementation("com.airbnb.okreplay:okreplay:1.6.0")
     testImplementation("com.airbnb.okreplay:junit:1.6.0")
     testImplementation("junit:junit:4.13.1")
