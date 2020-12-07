@@ -2,15 +2,6 @@ plugins {
     kotlin("jvm")
     jacoco
     id("com.github.gmazzo.buildconfig")
-    id("com.squareup.sqldelight")
-}
-
-sqldelight {
-    // This will be the name of the generated database class.
-    database("WordsDb") {
-        packageName = "com.olderwold.anki.funeasylearn"
-        sourceFolders = listOf("sqldelight")
-    }
 }
 
 buildConfig {
@@ -22,6 +13,8 @@ buildConfig {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation(project(":words"))
+    implementation(project(":phrases"))
 
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 

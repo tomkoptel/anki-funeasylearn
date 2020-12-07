@@ -1,0 +1,13 @@
+CREATE TABLE PhraseTranslations(
+  PhraseID INTEGER NOT NULL,
+  LanguageID INTEGER,
+  LanguageTranslation TEXT,
+  Phoneme TEXT,
+  PhraseSpace TEXT,
+  TranslationStressMarks TEXT,
+  Transliteration TEXT,
+  PRIMARY KEY(PhraseID)
+);
+
+selectAll:
+SELECT * FROM PhraseTranslations ORDER BY PhraseID;
