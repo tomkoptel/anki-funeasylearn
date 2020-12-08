@@ -1,5 +1,7 @@
 package com.olderwold.anki.funeasylearn
 
+import com.squareup.sqldelight.db.SqlDriver
+import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 import java.io.File
 
 fun Any.wordsDB(language: Language): File = resource("Words_${language.code}.db")
@@ -13,5 +15,7 @@ fun Any.resource(name: String): File {
 }
 
 enum class Language(val code: Int) {
-    PL(16), EN(46);
+    PL(46), EN(16);
 }
+
+fun File.driver(): SqlDriver = JdbcSqliteDriver("jdbc:sqlite:${this.absolutePath}")

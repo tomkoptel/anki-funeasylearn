@@ -11,3 +11,6 @@ CREATE TABLE PhraseTranslations(
 
 selectAll:
 SELECT * FROM PhraseTranslations ORDER BY PhraseID;
+
+findById:
+SELECT * FROM PhraseTranslations WHERE PhraseID = ? ORDER BY PhraseID;

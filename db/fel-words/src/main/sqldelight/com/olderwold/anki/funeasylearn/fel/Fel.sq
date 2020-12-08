@@ -6,3 +6,6 @@ CREATE TABLE Words (
 
 selectAll:
 SELECT * FROM Words ORDER BY WordID;
+
+findById:
+SELECT * FROM Words WHERE WordID = ? ORDER BY WordID;

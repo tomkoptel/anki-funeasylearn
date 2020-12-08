@@ -13,13 +13,24 @@ class CSVTableTest {
         val card = AnkiCard(
             front = "bad",
             back = "zły",
-            imageUrl = "https://http.cat/100",
+            images = listOf(
+                "https://http.cat/100",
+                "https://http.cat/101",
+                "https://http.cat/102",
+                "https://http.cat/103",
+                "https://http.cat/104",
+            ),
             explanation = "bad person"
         )
         CSVTable(csvFile).append(card).write()
 
         val rows = csvReader().readAll(csvFile).flatten()
-        rows shouldContain """<div>bad</div><br><img src="https://http.cat/100"/>"""
+        rows shouldContain "https://http.cat/100"
+        rows shouldContain "https://http.cat/101"
+        rows shouldContain "https://http.cat/102"
+        rows shouldContain "https://http.cat/103"
+        rows shouldContain "https://http.cat/104"
+        rows shouldContain "bad"
         rows shouldContain "zły"
         rows shouldContain "bad person"
     }

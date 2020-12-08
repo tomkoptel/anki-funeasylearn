@@ -17,3 +17,6 @@ CREATE TABLE WordTranslations(
 
 selectAll:
 SELECT * FROM WordTranslations ORDER BY WordID;
+
+findById:
+SELECT * FROM WordTranslations WHERE WordID = ? ORDER BY WordID;

@@ -14,6 +14,10 @@ data class SearchResultDto(
     @SerializedName("total_count")
     val totalCount: Int? = null
 ) {
+    fun images(take: Int): List<String> {
+        return content.orEmpty().filterNotNull().mapNotNull { data -> data.assets?.preview?.url }.take(take)
+    }
+
     data class Data(
         @SerializedName("aspect")
         val aspect: Double? = null,
