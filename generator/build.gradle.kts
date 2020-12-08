@@ -15,6 +15,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(project(":words"))
     implementation(project(":phrases"))
+    implementation(project(":fel-words"))
 
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 

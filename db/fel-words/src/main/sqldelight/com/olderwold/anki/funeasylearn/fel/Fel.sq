@@ -1,0 +1,8 @@
+CREATE TABLE Words (
+  WordID INTEGER NOT NULL PRIMARY KEY,
+  Adult INTEGER,
+  Meaning TEXT
+);
+
+selectAll:
+SELECT * FROM Words ORDER BY WordID;

@@ -1,5 +1,6 @@
 package com.olderwold.anki.funeasylearn
 
+import com.olderwold.anki.funeasylearn.fel.FelWordsDB
 import com.olderwold.anki.funeasylearn.phrases.PhrasesDb
 import com.olderwold.anki.funeasylearn.words.WordsDb
 import com.squareup.sqldelight.db.SqlDriver
@@ -27,6 +28,11 @@ class DbIntegrationTest {
     @Test
     fun consume_phrases_en() {
         PhrasesDb(phrasesDB(Language.EN).driver()).phrasesQueries.selectAll().executeAsList().shouldNotBeEmpty()
+    }
+
+    @Test
+    fun fel_words() {
+        FelWordsDB(db("FEL_Words.db").driver()).felQueries.selectAll().executeAsList().shouldNotBeEmpty()
     }
 
     private fun File.driver(): SqlDriver = JdbcSqliteDriver("jdbc:sqlite:${this.absolutePath}")
