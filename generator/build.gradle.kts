@@ -13,6 +13,8 @@ buildConfig {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation(project(":words"))
+    implementation(project(":phrases"))
 
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
@@ -21,7 +23,11 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.google.code.gson:gson:2.8.6")
 
-    testImplementation("org.amshove.kluent:kluent:1.4")
+    implementation("com.squareup.sqldelight:sqlite-driver:1.4.3")
+
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:0.13.0")
+
+    testImplementation("org.amshove.kluent:kluent:1.61")
     testImplementation("com.airbnb.okreplay:okreplay:1.6.0")
     testImplementation("com.airbnb.okreplay:junit:1.6.0")
     testImplementation("junit:junit:4.13.1")

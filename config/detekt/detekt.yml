@@ -330,7 +330,7 @@ naming:
     classPattern: '[A-Z$][a-zA-Z0-9$]*'
   ConstructorParameterNaming:
     active: true
-    excludes: [ '**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt' ]
+    excludes: [ '**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt', '**/generated/**' ]
     parameterPattern: '[a-z][A-Za-z0-9]*'
     privateParameterPattern: '[a-z][A-Za-z0-9]*'
     excludeClassPattern: '$^'

@@ -1,0 +1,19 @@
+CREATE TABLE WordTranslations(
+  WordID INTEGER NOT NULL,
+  LanguageID INTEGER,
+  PosID INTEGER,
+  GenderID INTEGER,
+  NumberID INTEGER,
+  LanguageTranslation TEXT,
+  Phoneme TEXT,
+  Prefix TEXT,
+  Suffix TEXT,
+  TranslationStressMarks TEXT,
+  Transliteration TEXT,
+  DefiniteArticle INTEGER,
+  IndefiniteArticle INTEGER,
+  PRIMARY KEY(WordID)
+);
+
+selectAll:
+SELECT * FROM WordTranslations ORDER BY WordID;

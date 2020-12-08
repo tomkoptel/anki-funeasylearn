@@ -5,6 +5,16 @@ plugins {
     id("com.github.gmazzo.buildconfig") version "2.0.2"
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.squareup.sqldelight:gradle-plugin:1.4.3")
+    }
+}
+
 allprojects {
     group = "com.olderwold.anki.funeasylearn"
     version = "1.0-SNAPSHOT"
@@ -26,16 +36,15 @@ allprojects {
         verbose.set(true)
         android.set(false)
         outputToConsole.set(true)
-        ignoreFailures.set(false)
+        ignoreFailures.set(true)
         enableExperimentalRules.set(true)
         filter {
-            exclude("**/generated/**")
+            exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/") }
             include("**/kotlin/**")
         }
     }
 
     detekt {
-        config = rootProject.files("$rootDir/detekt.yml")
         reports {
             html {
                 enabled = true
@@ -51,4 +60,8 @@ allprojects {
             this.dependsOn(ktlint)
             this.dependsOn(detekt)
         }
+
+    detekt.configureEach {
+        exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/") }
+    }
 }
