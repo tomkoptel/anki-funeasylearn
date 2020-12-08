@@ -32,7 +32,7 @@ class DbIntegrationTest {
 
     @Test
     fun fel_words() {
-        FelWordsDB(db("FEL_Words.db").driver()).felQueries.selectAll().executeAsList().shouldNotBeEmpty()
+        FelWordsDB(resource("FEL_Words.db").driver()).felQueries.selectAll().executeAsList().shouldNotBeEmpty()
     }
 
     private fun File.driver(): SqlDriver = JdbcSqliteDriver("jdbc:sqlite:${this.absolutePath}")

@@ -8,8 +8,7 @@ import org.junit.Test
 class CSVTableTest {
     @Test
     fun generate_file() {
-        val classLoader = this.javaClass.classLoader
-        val buildDir = File(requireNotNull(classLoader.getResource(".")).file)
+        val buildDir = resource(".")
         val csvFile = File(buildDir, "words.csv")
         val card = AnkiCard(
             front = "bad",
