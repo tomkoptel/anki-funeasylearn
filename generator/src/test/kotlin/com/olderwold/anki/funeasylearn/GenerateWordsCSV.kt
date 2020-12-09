@@ -38,13 +38,19 @@ class GenerateWordsCSV {
         generateWords(start = 1, end = 100)
     }
 
+    @Test
+    @OkReplay
+    fun generate_101_200() {
+        generateWords(start = 101, end = 200)
+    }
+
     private fun generateWords(start: Int, end: Int) {
         val buildDir = resource(".")
         val plWordsQueries = WordsDb(wordsDB(Language.PL).driver()).wordsQueries
         val enWordsQueries = WordsDb(wordsDB(Language.EN).driver()).wordsQueries
         val felWordsQueries = FelWordsDB(resource("FEL_Words.db").driver()).felQueries
 
-        val csvFile = File(buildDir, "anki_words.csv")
+        val csvFile = File(buildDir, "anki_words_${start}_$end.csv")
         val csvTable = CSVTable(csvFile)
 
         val plWords = plWordsQueries.selectAll().executeAsList()
@@ -54,7 +60,10 @@ class GenerateWordsCSV {
 
         var index = 0
         for (plWordTuple in plWords) {
-            if (index < startIndex) continue
+            if (index < startIndex) {
+                index++
+                continue
+            }
             if (index > endIndex) break
             val plWord = plWordTuple.LanguageTranslation
             val enWordTuple= enWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
@@ -64,14 +73,19 @@ class GenerateWordsCSV {
 
             if (plWord != null && enWord != null && meaning != null) {
                 try {
-                    val result = api.search(enWord).images(AnkiCard.MAX_IMAGES)
+                    val illustrations = api.searchIllustration(enWord).images(AnkiCard.MAX_IMAGES)
+                    val images = if (illustrations.isEmpty()) {
+                        api.searchPhoto(enWord).images(AnkiCard.MAX_IMAGES)
+                    } else {
+                        illustrations
+                    }
 
                     csvTable.append(
                         AnkiCard(
                             front = enWord,
                             back = plWord,
                             explanation = meaning,
-                            images = result
+                            images = images
                         )
                     )
 

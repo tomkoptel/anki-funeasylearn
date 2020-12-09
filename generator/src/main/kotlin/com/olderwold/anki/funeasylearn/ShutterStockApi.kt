@@ -13,8 +13,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+fun ShutterStockApi.searchIllustration(query: String): SearchResultDto {
+    return search(query,"illustration")
+}
+
+fun ShutterStockApi.searchPhoto(query: String): SearchResultDto {
+    return search(query,"photo")
+}
+
 interface ShutterStockApi {
-    fun search(query: String): SearchResultDto
+    fun search(query: String, image_type: String): SearchResultDto
 
     companion object {
         operator fun invoke(clientBuilder: OkHttpClient.Builder.() -> Unit = {}): ShutterStockApi {
@@ -36,8 +44,8 @@ interface ShutterStockApi {
     private class Impl(
         private val api: Api
     ) : ShutterStockApi {
-        override fun search(query: String): SearchResultDto {
-            val response = api.search(query).execute()
+        override fun search(query: String, image_type: String): SearchResultDto {
+            val response = api.search(query, image_type).execute()
             if (response.isSuccessful) {
                 return checkNotNull(response.body()) { "API returns empty response" }
             } else {
@@ -49,7 +57,8 @@ interface ShutterStockApi {
     private interface Api {
         @GET("/v2/images/search")
         fun search(
-            @Query("query") query: String
+            @Query("query") query: String,
+            @Query("image_type") image_type: String
         ): Call<SearchResultDto>
     }
 
