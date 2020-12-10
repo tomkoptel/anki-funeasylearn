@@ -28,12 +28,6 @@ class GenerateWordsCSV {
 
     @Test
     @OkReplay
-    fun generate_file_first_3() {
-        generateWords(start = 1, end = 3)
-    }
-
-    @Test
-    @OkReplay
     fun generate_first_100() {
         generateWords(start = 1, end = 100)
     }
@@ -42,6 +36,12 @@ class GenerateWordsCSV {
     @OkReplay
     fun generate_101_200() {
         generateWords(start = 101, end = 200)
+    }
+
+    @Test
+    @OkReplay
+    fun generate_201_300() {
+        generateWords(start = 201, end = 300)
     }
 
     private fun generateWords(start: Int, end: Int) {
@@ -73,9 +73,9 @@ class GenerateWordsCSV {
 
             if (plWord != null && enWord != null && meaning != null) {
                 try {
-                    val illustrations = api.searchIllustration(enWord).images(AnkiCard.MAX_IMAGES)
+                    val illustrations = api.searchPhoto(enWord).images(AnkiCard.MAX_IMAGES)
                     val images = if (illustrations.isEmpty()) {
-                        api.searchPhoto(enWord).images(AnkiCard.MAX_IMAGES)
+                        api.searchIllustration(enWord).images(AnkiCard.MAX_IMAGES)
                     } else {
                         illustrations
                     }
