@@ -44,6 +44,12 @@ class GenerateWordsCSV {
         generateWords(start = 201, end = 300)
     }
 
+    @Test
+    @OkReplay(mode = TapeMode.WRITE_ONLY)
+    fun generate_301_401() {
+        generateWords(start = 301, end = 401)
+    }
+
     private fun generateWords(start: Int, end: Int) {
         val buildDir = resource(".")
         val plWordsQueries = WordsDb(wordsDB(Language.PL).driver()).wordsQueries
