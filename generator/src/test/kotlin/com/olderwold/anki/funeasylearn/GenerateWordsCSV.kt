@@ -45,9 +45,15 @@ class GenerateWordsCSV {
     }
 
     @Test
-    @OkReplay(mode = TapeMode.WRITE_ONLY)
+    @OkReplay
     fun generate_301_401() {
         generateWords(start = 301, end = 401)
+    }
+
+    @Test
+    @OkReplay
+    fun generate_402_502() {
+        generateWords(start = 402, end = 502)
     }
 
     private fun generateWords(start: Int, end: Int) {
@@ -71,14 +77,15 @@ class GenerateWordsCSV {
                 continue
             }
             if (index > endIndex) break
-            val plWord = plWordTuple.LanguageTranslation
-            val enWordTuple= enWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
-            val enWord = enWordTuple?.LanguageTranslation
-            val felWordTuple= felWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
-            val meaning = felWordTuple?.Meaning
 
-            if (plWord != null && enWord != null && meaning != null) {
-                try {
+            try {
+                val plWord = plWordTuple.LanguageTranslation
+                val enWordTuple = enWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
+                val enWord = enWordTuple?.LanguageTranslation
+                val felWordTuple = felWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
+                val meaning = felWordTuple?.Meaning
+
+                if (plWord != null && enWord != null && meaning != null) {
                     val illustrations = api.searchPhoto(enWord).images(AnkiCard.MAX_IMAGES)
                     val images = if (illustrations.isEmpty()) {
                         api.searchIllustration(enWord).images(AnkiCard.MAX_IMAGES)
@@ -86,20 +93,20 @@ class GenerateWordsCSV {
                         illustrations
                     }
 
-                    csvTable.append(
-                        AnkiCard(
-                            front = enWord,
-                            back = plWord,
-                            explanation = meaning,
-                            images = images
-                        )
+                    val card = AnkiCard(
+                        front = enWord,
+                        back = plWord,
+                        explanation = meaning,
+                        images = images
                     )
-
-                    index++
-                } catch (ex: Exception) {
-                    println(ex)
+                    csvTable.append(card)
                 }
+
+            } catch (ex: Exception) {
+                println(ex)
             }
+
+            index++
         }
 
         csvTable.write()
