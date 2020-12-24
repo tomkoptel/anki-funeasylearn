@@ -74,6 +74,12 @@ class GenerateWordsCSV {
         generateWords(start = 800, end = 900)
     }
 
+    @Test
+    @OkReplay
+    fun generate_900_1000() {
+        generateWords(start = 900, end = 1000)
+    }
+
     private fun generateWords(start: Int, end: Int) {
         val buildDir = resource(".")
         val plWordsQueries = WordsDb(wordsDB(Language.PL).driver()).wordsQueries
