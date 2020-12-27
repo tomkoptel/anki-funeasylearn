@@ -15,7 +15,7 @@ fun Any.resource(name: String): File {
 }
 
 enum class Language(val code: Int) {
-    PL(46), EN(16);
+    HU(30), PL(46), EN(16);
 }
 
 fun File.driver(): SqlDriver = JdbcSqliteDriver("jdbc:sqlite:${this.absolutePath}")

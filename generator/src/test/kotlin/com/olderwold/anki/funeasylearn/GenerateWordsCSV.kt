@@ -27,6 +27,12 @@ class GenerateWordsCSV {
     val testRule: TestRule = RecorderRule(configuration)
 
     @Test
+    @OkReplay(tape = "generate_first_100")
+    fun generate_first_100_hu() {
+        generateWords(start = 1, end = 100, language = Language.HU)
+    }
+
+    @Test
     @OkReplay
     fun generate_first_100() {
         generateWords(start = 1, end = 100)
@@ -86,9 +92,9 @@ class GenerateWordsCSV {
         generateWords(start = 1000, end = 1100)
     }
 
-    private fun generateWords(start: Int, end: Int) {
+    private fun generateWords(start: Int, end: Int, language: Language = Language.PL) {
         val buildDir = resource(".")
-        val plWordsQueries = WordsDb(wordsDB(Language.PL).driver()).wordsQueries
+        val plWordsQueries = WordsDb(wordsDB(language).driver()).wordsQueries
         val enWordsQueries = WordsDb(wordsDB(Language.EN).driver()).wordsQueries
         val felWordsQueries = FelWordsDB(resource("FEL_Words.db").driver()).felQueries
 
