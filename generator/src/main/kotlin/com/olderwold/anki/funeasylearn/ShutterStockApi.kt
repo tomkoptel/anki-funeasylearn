@@ -21,6 +21,23 @@ fun ShutterStockApi.searchPhoto(query: String): SearchResultDto {
     return search(query, "photo")
 }
 
+private const val DEFAULT_IMAGE = "https://www.pedalo.co.uk/wp-content/webp-express/webp-images/" +
+    "doc-root/wp-content/uploads/2019/05/Cats-Protection-1024x520.png.webp"
+
+fun ShutterStockApi.searchOrDefault(word: String): List<String> {
+    val illustrations = searchPhoto(word).images(AnkiCard.MAX_IMAGES)
+    return if (illustrations.isEmpty()) {
+        val fallback = searchIllustration(word).images(AnkiCard.MAX_IMAGES)
+        if (fallback.isEmpty()) {
+            listOf(DEFAULT_IMAGE)
+        } else {
+            fallback
+        }
+    } else {
+        illustrations
+    }
+}
+
 interface ShutterStockApi {
     fun search(query: String, imageType: String): SearchResultDto
 

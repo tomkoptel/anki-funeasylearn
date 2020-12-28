@@ -1,15 +1,14 @@
 package com.olderwold.anki.funeasylearn
 
-class WordsGenerator(
+class PhraseGenerator(
     private val csvTableFactory: CSVTableFactory,
     private val languageTable: LanguageTable,
     private val api: ShutterStockApi
 ) {
     @Suppress("NestedBlockDepth", "TooGenericExceptionCaught", "LoopWithTooManyJumpStatements")
-    fun generate(start: Int, end: Int, language: Language = Language.PL): CSVTable {
-        val plWordsQueries = languageTable.wordsQueries(language)
-        val enWordsQueries = languageTable.wordsQueries(Language.EN)
-        val felWordsQueries = languageTable.felQueries()
+    fun generate(start: Int, end: Int, language: Language): CSVTable {
+        val plWordsQueries = languageTable.phraseQueries(language)
+        val enWordsQueries = languageTable.phraseQueries(Language.EN)
         val csvTable = csvTableFactory.create(start, end)
         val plWords = plWordsQueries.selectAll().executeAsList()
 
@@ -27,17 +26,15 @@ class WordsGenerator(
 
             try {
                 val plWord = plWordTuple.LanguageTranslation
-                val enWordTuple = enWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
+                val enWordTuple = enWordsQueries.findById(plWordTuple.PhraseID).executeAsList().firstOrNull()
                 val enWord = enWordTuple?.LanguageTranslation
-                val felWordTuple = felWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
-                val meaning = felWordTuple?.Meaning
 
-                if (plWord != null && enWord != null && meaning != null) {
+                if (plWord != null && enWord != null) {
                     val images = api.searchOrDefault(enWord)
                     val card = AnkiCard(
                         front = enWord,
                         back = plWord,
-                        explanation = meaning,
+                        explanation = "",
                         images = images
                     )
                     csvTable.append(card)

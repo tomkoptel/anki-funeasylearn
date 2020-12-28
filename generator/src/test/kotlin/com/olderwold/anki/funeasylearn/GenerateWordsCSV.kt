@@ -1,6 +1,5 @@
 package com.olderwold.anki.funeasylearn
 
-import java.io.File
 import okreplay.OkReplay
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
@@ -10,7 +9,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 
-@Suppress("LoopWithTooManyJumpStatements")
 class GenerateWordsCSV {
     private val okReplayInterceptor = OkReplayInterceptor()
     private val configuration = OkReplayConfig.Builder()
@@ -21,15 +19,8 @@ class GenerateWordsCSV {
     private val api = ShutterStockApi { addInterceptor(okReplayInterceptor) }
     private val wordsGenerator by lazy {
         WordsGenerator(
-            csvTableFactory = CSVTableFactory(buildDir = resource(".")),
-            languageTable = LanguageTable(
-                dbFileProvider = object : DbFileProvider {
-                    override fun provide(language: Language): File {
-                        return wordsDB(language)
-                    }
-                },
-                felWordsFile = resource("FEL_Words.db")
-            ),
+            csvTableFactory = CSVTableFactory(buildDir = resource("."), prefix = "words"),
+            languageTable = wordsLanguageTable(),
             api = api
         )
     }
