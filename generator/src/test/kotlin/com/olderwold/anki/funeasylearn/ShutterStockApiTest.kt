@@ -26,7 +26,7 @@ internal class ShutterStockApiTest {
     @Test
     @OkReplay
     fun test_search() {
-        val result = api.search(query = "modest", image_type = "photo")
+        val result = api.search(query = "modest", imageType = "photo")
         result.searchId!! shouldBeEqualTo "547bcaaa-1d9f-456a-ab7c-12603e21079d"
     }
 }

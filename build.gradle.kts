@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm") version "1.4.20"
     id("org.jlleitschuh.gradle.ktlint") version "9.4.1"
@@ -63,5 +65,9 @@ allprojects {
 
     detekt.configureEach {
         exclude { projectDir.toURI().relativize(it.file.toURI()).path.contains("/generated/") }
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "1.8"
     }
 }

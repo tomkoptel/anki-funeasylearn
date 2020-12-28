@@ -3,9 +3,6 @@ package com.olderwold.anki.funeasylearn
 import com.olderwold.anki.funeasylearn.fel.FelWordsDB
 import com.olderwold.anki.funeasylearn.phrases.PhrasesDb
 import com.olderwold.anki.funeasylearn.words.WordsDb
-import com.squareup.sqldelight.db.SqlDriver
-import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
-import java.io.File
 import org.amshove.kluent.shouldNotBeEmpty
 import org.junit.Test
 

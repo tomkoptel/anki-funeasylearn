@@ -1,7 +1,6 @@
 package com.olderwold.anki.funeasylearn
 
-import com.olderwold.anki.funeasylearn.fel.FelWordsDB
-import com.olderwold.anki.funeasylearn.words.WordsDb
+import java.io.File
 import okreplay.OkReplay
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
@@ -10,7 +9,6 @@ import okreplay.TapeMode
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
-import java.io.File
 
 @Suppress("LoopWithTooManyJumpStatements")
 class GenerateWordsCSV {
@@ -21,6 +19,20 @@ class GenerateWordsCSV {
         .interceptor(okReplayInterceptor)
         .build()
     private val api = ShutterStockApi { addInterceptor(okReplayInterceptor) }
+    private val wordsGenerator by lazy {
+        WordsGenerator(
+            csvTableFactory = CSVTableFactory(buildDir = resource(".")),
+            languageTable = LanguageTable(
+                dbFileProvider = object : DbFileProvider {
+                    override fun provide(language: Language): File {
+                        return wordsDB(language)
+                    }
+                },
+                felWordsFile = resource("FEL_Words.db")
+            ),
+            api = api
+        )
+    }
 
     @JvmField
     @Rule
@@ -93,59 +105,7 @@ class GenerateWordsCSV {
     }
 
     private fun generateWords(start: Int, end: Int, language: Language = Language.PL) {
-        val buildDir = resource(".")
-        val plWordsQueries = WordsDb(wordsDB(language).driver()).wordsQueries
-        val enWordsQueries = WordsDb(wordsDB(Language.EN).driver()).wordsQueries
-        val felWordsQueries = FelWordsDB(resource("FEL_Words.db").driver()).felQueries
-
-        val csvFile = File(buildDir, "anki_words_${start}_$end.csv")
-        val csvTable = CSVTable(csvFile)
-
-        val plWords = plWordsQueries.selectAll().executeAsList()
-
-        val startIndex = 0.coerceAtLeast(start - 1)
-        val endIndex = (end - 1).coerceAtMost(plWords.size - 1)
-
-        var index = 0
-        for (plWordTuple in plWords) {
-            if (index < startIndex) {
-                index++
-                continue
-            }
-            if (index > endIndex) break
-
-            try {
-                val plWord = plWordTuple.LanguageTranslation
-                val enWordTuple = enWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
-                val enWord = enWordTuple?.LanguageTranslation
-                val felWordTuple = felWordsQueries.findById(plWordTuple.WordID).executeAsList().firstOrNull()
-                val meaning = felWordTuple?.Meaning
-
-                if (plWord != null && enWord != null && meaning != null) {
-                    val illustrations = api.searchPhoto(enWord).images(AnkiCard.MAX_IMAGES)
-                    val images = if (illustrations.isEmpty()) {
-                        api.searchIllustration(enWord).images(AnkiCard.MAX_IMAGES)
-                    } else {
-                        illustrations
-                    }
-
-                    val card = AnkiCard(
-                        front = enWord,
-                        back = plWord,
-                        explanation = meaning,
-                        images = images
-                    )
-                    csvTable.append(card)
-                }
-
-            } catch (ex: Exception) {
-                println(ex)
-            }
-
-            index++
-        }
-
-        csvTable.write()
-        println(csvFile)
+        val table: CSVTable = wordsGenerator.generate(start, end, language)
+        println(table.path)
     }
 }

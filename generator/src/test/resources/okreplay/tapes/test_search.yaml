@@ -4,7 +4,7 @@ interactions:
 - recorded: 2020-12-06T14:13:30.340Z
   request:
     method: GET
-    uri: https://api.shutterstock.com/v2/images/search?query=modest
+    uri: https://api.shutterstock.com/v2/images/search?query=modest&image_type=photo
     headers:
       Authorization: Basic cW1sY0cwUnl0WG9tb3R3NGhocXBFdnZ6TUJnRTdqSXE6NEtyS3pMeERtUmlLMm1mSg==
   response:
