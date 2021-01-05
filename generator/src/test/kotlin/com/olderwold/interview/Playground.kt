@@ -10,15 +10,15 @@ class Playground {
     fun `should be 7`() {
         // iterate through string, extract numbers, operator
         /**
-            {
-              "operator": "+",
-              "members": ["3"],
-              "node": {
-                "operator": "+",
-                "members": ["2", "2"]
-              }
-            }
-        **/
+        {
+        "operator": "+",
+        "members": ["3"],
+        "node": {
+        "operator": "+",
+        "members": ["2", "2"]
+        }
+        }
+         **/
 
         val data: Node = Data(
             operator = "+",
@@ -32,6 +32,44 @@ class Playground {
         compute(root = data) shouldBeEqualTo 7
     }
 
+    @Test
+    fun `should be 2`() {
+        // ((2 + 2) + 3) - 5
+        /**
+        val input = """
+            {
+              "operator": "-",
+              "members": ["5"],
+              "node": {
+                "operator": "+",
+                "members": ["3"],
+                "node": {
+                  "operator": "+",
+                  "members": ["2", "2"]
+                }
+              }
+            }
+        """.trimIndent()
+        **/
+        // iterate through string, extract numbers, operator
+
+        val nestedNode = Data(
+            operator = "+",
+            members = listOf("3"),
+            node = NodeImpl(
+                operator = "+",
+                members = listOf("2", "2"),
+            )
+        )
+        val data = Data(
+            operator = "-",
+            members = listOf("5"),
+            node = nestedNode,
+        )
+
+        compute(root = data) shouldBeEqualTo 2
+    }
+
     private fun compute(root: Node, output: Int = 0): Int {
         val nestedNode = root.node
         return if (nestedNode == null) {
@@ -42,18 +80,35 @@ class Playground {
         }
     }
 
-    private fun combineResult(root: Node, output: Int): Int {
-        val integers = root.members.map { it.toInt() }
-        val outcome = when {
-            root.operator == "+" -> {
-                integers.sum()
+    private fun combineResult(root: Node, input: Int): Int {
+        if (root.members.isEmpty()) {
+            return input
+        } else {
+            if (root.members.size >= 2) {
+                val integers = root.members.map { it.toInt() }
+                val outcome = when {
+                    root.operator == "+" -> {
+                        integers.sum()
+                    }
+                    root.operator == "-" -> {
+                        integers.reduceRight { num, acc -> num - acc }
+                    }
+                    else -> 0
+                }
+                return input + outcome
+            } else {
+                val member = root.members.first().toInt()
+                return when {
+                    root.operator == "+" -> {
+                        member + input
+                    }
+                    root.operator == "-" -> {
+                        input - member
+                    }
+                    else -> 0
+                }
             }
-            root.operator == "-" -> {
-                integers.reduceRight { num, acc -> num - acc }
-            }
-            else -> 0
         }
-        return output + outcome
     }
 }
 
