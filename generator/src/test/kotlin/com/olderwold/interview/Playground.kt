@@ -70,6 +70,44 @@ class Playground {
         compute(root = data) shouldBeEqualTo 2
     }
 
+    @Test
+    fun `should be -2`() {
+        // ((2 + 2) + 3) - 5
+        /**
+        val input = """
+        {
+        "operator": "-",
+        "members": ["5"],
+        "node": {
+        "operator": "+",
+        "members": ["3"],
+        "node": {
+        "operator": "-",
+        "members": ["2", "2"]
+        }
+        }
+        }
+        """.trimIndent()
+         **/
+        // iterate through string, extract numbers, operator
+
+        val nestedNode = Data(
+            operator = "+",
+            members = listOf("3"),
+            node = NodeImpl(
+                operator = "-",
+                members = listOf("2", "2"),
+            )
+        )
+        val data = Data(
+            operator = "-",
+            members = listOf("5"),
+            node = nestedNode,
+        )
+
+        compute(root = data) shouldBeEqualTo -2
+    }
+
     private fun compute(root: Node, output: Int = 0): Int {
         val nestedNode = root.node
         return if (nestedNode == null) {
@@ -91,7 +129,7 @@ class Playground {
                         integers.sum()
                     }
                     root.operator == "-" -> {
-                        integers.reduceRight { num, acc -> num - acc }
+                        integers.reduceRight { num, acc -> acc - num }
                     }
                     else -> 0
                 }
