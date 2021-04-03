@@ -36,6 +36,12 @@ class GenerateWordsCSV {
     }
 
     @Test
+    @OkReplay(tape = "words_hu_1_20", mode = TapeMode.WRITE_ONLY)
+    fun generate_1_20_hu() {
+        generateWords(start = 1, end = 20, language = Language.HU)
+    }
+
+    @Test
     @OkReplay
     fun generate_first_100() {
         generateWords(start = 1, end = 100)
