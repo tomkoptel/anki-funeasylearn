@@ -31,7 +31,7 @@ class GeneratePhrasesCSV {
 
     @Test
     @OkReplay
-    fun generate_phrases_1_100() {
+    fun phrases_pl_1_100() {
         generateWords(start = 1, end = 100)
     }
 
