@@ -30,164 +30,158 @@ class GenerateWordsCSV {
     val testRule: TestRule = RecorderRule(configuration)
 
     @Test
-    @OkReplay(tape = "generate_first_100")
-    fun generate_first_100_hu() {
-        generateWords(start = 1, end = 100, language = Language.HU)
-    }
-
-    @Test
-    @OkReplay(tape = "words_hu_1_20", mode = TapeMode.WRITE_ONLY)
-    fun generate_1_20_hu() {
+    @OkReplay
+    fun words_hu_1_20() {
         generateWords(start = 1, end = 20, language = Language.HU)
     }
 
     @Test
     @OkReplay
-    fun generate_first_100() {
+    fun words_pl_1_100() {
         generateWords(start = 1, end = 100)
     }
 
     @Test
     @OkReplay
-    fun generate_101_200() {
+    fun words_pl_101_200() {
         generateWords(start = 101, end = 200)
     }
 
     @Test
     @OkReplay
-    fun generate_201_300() {
+    fun words_pl_201_300() {
         generateWords(start = 201, end = 300)
     }
 
     @Test
     @OkReplay
-    fun generate_301_401() {
+    fun words_pl_301_401() {
         generateWords(start = 301, end = 401)
     }
 
     @Test
     @OkReplay
-    fun generate_402_502() {
+    fun words_pl_402_502() {
         generateWords(start = 402, end = 502)
     }
 
     @Test
     @OkReplay
-    fun generate_502_700() {
+    fun words_pl_502_700() {
         generateWords(start = 502, end = 700)
     }
 
     @Test
     @OkReplay
-    fun generate_701_800() {
+    fun words_pl_701_800() {
         generateWords(start = 700, end = 800)
     }
 
     @Test
     @OkReplay
-    fun generate_800_900() {
+    fun words_pl_800_900() {
         generateWords(start = 800, end = 900)
     }
 
     @Test
     @OkReplay
-    fun generate_900_1000() {
+    fun words_pl_900_1000() {
         generateWords(start = 900, end = 1000)
     }
 
     @Test
     @OkReplay
-    fun generate_1000_1100() {
+    fun words_pl_1000_1100() {
         generateWords(start = 1000, end = 1100)
     }
 
     @Test
     @OkReplay
-    fun generate_1101_1200() {
+    fun words_pl_1101_1200() {
         generateWords(start = 1101, end = 1200)
     }
 
     @Test
     @OkReplay
-    fun generate_1201_1300() {
+    fun words_pl_1201_1300() {
         generateWords(start = 1201, end = 1300)
     }
 
     @Test
     @OkReplay
-    fun generate_1301_1400() {
+    fun words_pl_1301_1400() {
         generateWords(start = 1301, end = 1400)
     }
 
     @Test
     @OkReplay
-    fun generate_1401_1500() {
+    fun words_pl_1401_1500() {
         generateWords(start = 1401, end = 1500)
     }
 
     @Test
     @OkReplay
-    fun generate_1501_1600() {
+    fun words_pl_1501_1600() {
         generateWords(start = 1501, end = 1600)
     }
 
     @Test
     @OkReplay
-    fun generate_1601_1700() {
+    fun words_pl_1601_1700() {
         generateWords(start = 1601, end = 1700)
     }
 
     @Test
     @OkReplay
-    fun generate_1701_1800() {
+    fun words_pl_1701_1800() {
         generateWords(start = 1701, end = 1800)
     }
 
     @Test
     @OkReplay
-    fun generate_1801_1900() {
+    fun words_pl_1801_1900() {
         generateWords(start = 1801, end = 1900)
     }
 
     @Test
     @OkReplay
-    fun generate_1901_2000() {
+    fun words_pl_1901_2000() {
         generateWords(start = 1901, end = 2000)
     }
 
     @Test
     @OkReplay
-    fun generate_2001_2100() {
+    fun words_pl_2001_2100() {
         generateWords(start = 2001, end = 2100)
     }
 
     @Test
     @OkReplay
-    fun generate_2101_2200() {
+    fun words_pl_2101_2200() {
         generateWords(start = 2101, end = 2200)
     }
 
     @Test
     @OkReplay
-    fun generate_2201_2300() {
+    fun words_pl_2201_2300() {
         generateWords(start = 2201, end = 2300)
     }
 
     @Test
     @OkReplay
-    fun generate_2301_2400() {
+    fun words_pl_2301_2400() {
         generateWords(start = 2301, end = 2400)
     }
 
     @Test
     @OkReplay
-    fun generate_2401_2500() {
+    fun words_pl_2401_2500() {
         generateWords(start = 2401, end = 2500)
     }
 
     @Test
     @OkReplay
-    fun generate_2501_2600() {
+    fun words_pl_2501_2600() {
         generateWords(start = 2501, end = 2600)
     }
 
