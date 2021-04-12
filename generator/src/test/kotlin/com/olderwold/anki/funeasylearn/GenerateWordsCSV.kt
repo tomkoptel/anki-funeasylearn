@@ -221,6 +221,12 @@ class GenerateWordsCSV {
         generateWords(start = 2701, end = 2800)
     }
 
+    @Test
+    @OkReplay
+    fun words_pl_2801_2900() {
+        generateWords(start = 2801, end = 2900)
+    }
+
     private fun generateWords(start: Int, end: Int, language: Language = Language.PL) {
         val table: CSVTable = wordsGenerator.generate(start, end, language)
         println(table.path)
