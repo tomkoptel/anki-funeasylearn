@@ -79,6 +79,12 @@ class GenerateWordsCSV {
 
     @Test
     @OkReplay
+    fun words_hu_161_180() {
+        generateWords(start = 161, end = 180, language = Language.HU)
+    }
+
+    @Test
+    @OkReplay
     fun words_pl_1_100() {
         generateWords(start = 1, end = 100)
     }
