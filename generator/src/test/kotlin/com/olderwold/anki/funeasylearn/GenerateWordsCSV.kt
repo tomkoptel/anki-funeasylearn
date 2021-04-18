@@ -92,178 +92,178 @@ class GenerateWordsCSV {
     @Test
     @OkReplay
     fun words_pl_1_100() {
-        generateWords(start = 1, end = 100)
+        generateWords(start = 1, end = 100, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_101_200() {
-        generateWords(start = 101, end = 200)
+        generateWords(start = 101, end = 200, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_201_300() {
-        generateWords(start = 201, end = 300)
+        generateWords(start = 201, end = 300, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_301_401() {
-        generateWords(start = 301, end = 401)
+        generateWords(start = 301, end = 401, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_402_502() {
-        generateWords(start = 402, end = 502)
+        generateWords(start = 402, end = 502, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_502_700() {
-        generateWords(start = 502, end = 700)
+        generateWords(start = 502, end = 700, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_701_800() {
-        generateWords(start = 700, end = 800)
+        generateWords(start = 700, end = 800, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_800_900() {
-        generateWords(start = 800, end = 900)
+        generateWords(start = 800, end = 900, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_900_1000() {
-        generateWords(start = 900, end = 1000)
+        generateWords(start = 900, end = 1000, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1000_1100() {
-        generateWords(start = 1000, end = 1100)
+        generateWords(start = 1000, end = 1100, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1101_1200() {
-        generateWords(start = 1101, end = 1200)
+        generateWords(start = 1101, end = 1200, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1201_1300() {
-        generateWords(start = 1201, end = 1300)
+        generateWords(start = 1201, end = 1300, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1301_1400() {
-        generateWords(start = 1301, end = 1400)
+        generateWords(start = 1301, end = 1400, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1401_1500() {
-        generateWords(start = 1401, end = 1500)
+        generateWords(start = 1401, end = 1500, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1501_1600() {
-        generateWords(start = 1501, end = 1600)
+        generateWords(start = 1501, end = 1600, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1601_1700() {
-        generateWords(start = 1601, end = 1700)
+        generateWords(start = 1601, end = 1700, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1701_1800() {
-        generateWords(start = 1701, end = 1800)
+        generateWords(start = 1701, end = 1800, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1801_1900() {
-        generateWords(start = 1801, end = 1900)
+        generateWords(start = 1801, end = 1900, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_1901_2000() {
-        generateWords(start = 1901, end = 2000)
+        generateWords(start = 1901, end = 2000, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2001_2100() {
-        generateWords(start = 2001, end = 2100)
+        generateWords(start = 2001, end = 2100, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2101_2200() {
-        generateWords(start = 2101, end = 2200)
+        generateWords(start = 2101, end = 2200, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2201_2300() {
-        generateWords(start = 2201, end = 2300)
+        generateWords(start = 2201, end = 2300, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2301_2400() {
-        generateWords(start = 2301, end = 2400)
+        generateWords(start = 2301, end = 2400, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2401_2500() {
-        generateWords(start = 2401, end = 2500)
+        generateWords(start = 2401, end = 2500, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2501_2600() {
-        generateWords(start = 2501, end = 2600)
+        generateWords(start = 2501, end = 2600, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2601_2700() {
-        generateWords(start = 2601, end = 2700)
+        generateWords(start = 2601, end = 2700, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2701_2800() {
-        generateWords(start = 2701, end = 2800)
+        generateWords(start = 2701, end = 2800, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2801_2900() {
-        generateWords(start = 2801, end = 2900)
+        generateWords(start = 2801, end = 2900, language = Language.PL)
     }
 
     @Test
     @OkReplay
     fun words_pl_2901_3000() {
-        generateWords(start = 2901, end = 3000)
+        generateWords(start = 2901, end = 3000, language = Language.PL)
     }
 
-    private fun generateWords(start: Int, end: Int, language: Language = Language.PL) {
+    private fun generateWords(start: Int, end: Int, language: Language) {
         val table: CSVTable = wordsGenerator.generate(start, end, language)
         println(table.path)
     }
