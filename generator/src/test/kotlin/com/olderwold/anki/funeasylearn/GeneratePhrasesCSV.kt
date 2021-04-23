@@ -59,6 +59,12 @@ class GeneratePhrasesCSV {
         generateWords(start = 31, end = 40, language = Language.HU)
     }
 
+    @Test
+    @OkReplay
+    fun phrases_hu_41_50() {
+        generateWords(start = 41, end = 50, language = Language.HU)
+    }
+
     private fun generateWords(start: Int, end: Int, language: Language = Language.PL) {
         val table: CSVTable = phraseGenerator.generate(start, end, language)
         println(table.path)
