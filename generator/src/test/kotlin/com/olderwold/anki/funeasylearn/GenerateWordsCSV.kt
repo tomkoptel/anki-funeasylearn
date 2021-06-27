@@ -1,10 +1,6 @@
 package com.olderwold.anki.funeasylearn
 
-import okreplay.OkReplay
-import okreplay.OkReplayConfig
-import okreplay.OkReplayInterceptor
-import okreplay.RecorderRule
-import okreplay.TapeMode
+import okreplay.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
@@ -177,6 +173,12 @@ class GenerateWordsCSV {
     @OkReplay
     fun words_hu_481_500() {
         generateWords(start = 481, end = 500, language = Language.HU)
+    }
+
+    @Test
+    @OkReplay
+    fun words_hu_501_520() {
+        generateWords(start = 501, end = 520, language = Language.HU)
     }
 
     @Test
