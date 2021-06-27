@@ -7,7 +7,7 @@ data class AnkiCard(
     val images: List<String>
 ) {
     companion object {
-        const val MAX_IMAGES = 5
+        const val MAX_IMAGES: Int = 5
     }
     fun toList(): List<String?> {
         val images5 = images.take(MAX_IMAGES).toMutableList()
