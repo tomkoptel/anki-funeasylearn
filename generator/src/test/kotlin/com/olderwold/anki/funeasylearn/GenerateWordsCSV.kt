@@ -1,6 +1,10 @@
 package com.olderwold.anki.funeasylearn
 
-import okreplay.*
+import okreplay.OkReplay
+import okreplay.OkReplayConfig
+import okreplay.OkReplayInterceptor
+import okreplay.RecorderRule
+import okreplay.TapeMode
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
