@@ -55,7 +55,7 @@ allprojects {
         }
     }
 
-    val ktlint = tasks.withType<org.jlleitschuh.gradle.ktlint.KtlintCheckTask>()
+    val ktlint = tasks.withType<org.jlleitschuh.gradle.ktlint.tasks.BaseKtLintCheckTask>()
     val detekt = tasks.withType<io.gitlab.arturbosch.detekt.Detekt>()
     tasks.matching { it.name.contains("check") }
         .configureEach {
