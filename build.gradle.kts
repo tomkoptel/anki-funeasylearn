@@ -4,7 +4,7 @@ plugins {
     kotlin("jvm") version "1.5.20"
     id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
     id("io.gitlab.arturbosch.detekt") version "1.10.0"
-    id("com.github.gmazzo.buildconfig") version "2.0.2"
+    id("com.github.gmazzo.buildconfig") version "3.0.1"
 }
 
 buildscript {
