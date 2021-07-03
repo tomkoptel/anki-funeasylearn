@@ -1,5 +1,7 @@
 package com.olderwold.anki.funeasylearn
 
+import java.io.File
+import java.nio.file.Files
 import okreplay.OkReplay
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
@@ -408,7 +410,11 @@ class GenerateWordsCSV {
     }
 
     private fun generateWords(start: Int, end: Int, language: Language) {
-        val table: CSVTable = wordsGenerator.generate(start, end, language)
-        println(table.path)
+        val table = wordsGenerator.generate(start, end, language)
+        val desktop = "${System.getProperty("user.home")}${File.separator}Desktop"
+        val destPath = File(desktop, table.path.name).toPath()
+        val srcPath = table.path.toPath()
+        println(srcPath)
+        Files.copy(srcPath, destPath)
     }
 }
