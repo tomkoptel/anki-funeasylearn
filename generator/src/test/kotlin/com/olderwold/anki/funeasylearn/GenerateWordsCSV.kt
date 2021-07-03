@@ -417,10 +417,12 @@ class GenerateWordsCSV {
 
     private fun generateWords(start: Int, end: Int, language: Language) {
         val table = wordsGenerator.generate(start, end, language)
-        val desktop = "${System.getProperty("user.home")}${File.separator}Desktop"
-        val destPath = File(desktop, table.path.name).toPath()
+        val desktop = File("${System.getProperty("user.home")}${File.separator}Desktop")
         val srcPath = table.path.toPath()
+        if (desktop.exists()) {
+            val destPath = File(desktop, table.path.name).toPath()
+            Files.copy(srcPath, destPath)
+        }
         println(srcPath)
-        Files.copy(srcPath, destPath)
     }
 }
