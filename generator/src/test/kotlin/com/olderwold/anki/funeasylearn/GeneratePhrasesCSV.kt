@@ -1,5 +1,7 @@
 package com.olderwold.anki.funeasylearn
 
+import java.io.File
+import java.nio.file.Files
 import okreplay.OkReplay
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
@@ -71,8 +73,20 @@ class GeneratePhrasesCSV {
         generateWords(start = 51, end = 60, language = Language.HU)
     }
 
+    @Test
+    @OkReplay
+    fun phrases_hu_61_70() {
+        generateWords(start = 61, end = 70, language = Language.HU)
+    }
+
     private fun generateWords(start: Int, end: Int, language: Language = Language.PL) {
         val table: CSVTable = phraseGenerator.generate(start, end, language)
-        println(table.path)
+        val desktop = File("${System.getProperty("user.home")}${File.separator}Desktop")
+        val srcPath = table.path.toPath()
+        if (desktop.exists()) {
+            val destPath = File(desktop, table.path.name).toPath()
+            Files.copy(srcPath, destPath)
+        }
+        println(srcPath)
     }
 }
