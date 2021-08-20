@@ -29,7 +29,7 @@ dependencies {
     implementation("com.github.doyaaaaaken:kotlin-csv-jvm:0.15.2")
 
     testImplementation("org.amshove.kluent:kluent:1.68")
-    testImplementation("org.mockito:mockito-inline:3.11.2")
+    testImplementation("org.mockito:mockito-inline:3.12.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("com.airbnb.okreplay:okreplay:1.6.0")
     testImplementation("com.airbnb.okreplay:junit:1.6.0")
