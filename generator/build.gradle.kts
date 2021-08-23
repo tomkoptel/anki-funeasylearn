@@ -26,7 +26,7 @@ dependencies {
 
     implementation("com.squareup.sqldelight:sqlite-driver:1.5.1")
 
-    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:0.15.2")
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.0.0")
 
     testImplementation("org.amshove.kluent:kluent:1.68")
     testImplementation("org.mockito:mockito-inline:3.12.1")
