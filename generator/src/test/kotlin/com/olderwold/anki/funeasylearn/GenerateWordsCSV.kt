@@ -230,8 +230,14 @@ class GenerateWordsCSV {
     }
 
     @Test
-    @OkReplay(mode = TapeMode.WRITE_ONLY)
+    @OkReplay
     fun words_hu_661_680() {
+        generateWords(start = 661, end = 680, language = Language.HU)
+    }
+
+    @Test
+    @OkReplay
+    fun words_hu_681_700() {
         generateWords(start = 661, end = 680, language = Language.HU)
     }
 
