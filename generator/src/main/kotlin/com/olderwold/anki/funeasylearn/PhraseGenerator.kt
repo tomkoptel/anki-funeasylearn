@@ -6,9 +6,9 @@ class PhraseGenerator(
     private val api: ShutterStockApi
 ) {
     @Suppress("NestedBlockDepth", "TooGenericExceptionCaught", "LoopWithTooManyJumpStatements")
-    fun generate(start: Int, end: Int, language: Language): CSVTable {
-        val plWordsQueries = languageTable.phraseQueries(language)
-        val enWordsQueries = languageTable.phraseQueries(Language.EN)
+    fun generate(start: Int, end: Int, targetLanguage: Language, assistingLanguage: Language = Language.EN): CSVTable {
+        val plWordsQueries = languageTable.phraseQueries(targetLanguage)
+        val enWordsQueries = languageTable.phraseQueries(assistingLanguage)
         val csvTable = csvTableFactory.create(start, end)
         val plWords = plWordsQueries.selectAll().executeAsList()
 

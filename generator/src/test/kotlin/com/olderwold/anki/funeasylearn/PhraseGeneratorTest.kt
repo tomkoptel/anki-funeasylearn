@@ -32,7 +32,7 @@ class PhraseGeneratorTest {
     private val api: ShutterStockApi = mock {
         given(mock.search(any(), eq("photo"))).willReturn(dto)
     }
-    private val wordsGenerator = PhraseGenerator(
+    private val phraseGenerator = PhraseGenerator(
         csvTableFactory = csvTableFactory,
         languageTable = languageTable,
         api = api
@@ -48,7 +48,7 @@ class PhraseGeneratorTest {
         enWordsQueries selectAllReturns enWords
         enWordsQueries.findByIdAlwaysReturnsTranslation()
 
-        wordsGenerator.generate(start = 1, end = 5, language = Language.PL)
+        phraseGenerator.generate(start = 1, end = 5, targetLanguage = Language.PL)
 
         resultTable.size shouldBeEqualTo 5
         verify(csvTable).append(ankiCard(index = 1))
@@ -68,7 +68,7 @@ class PhraseGeneratorTest {
         enWordsQueries selectAllReturns enWords
         enWordsQueries.findByIdAlwaysReturnsTranslation()
 
-        wordsGenerator.generate(start = 6, end = 10, language = Language.PL)
+        phraseGenerator.generate(start = 6, end = 10, targetLanguage = Language.PL)
 
         resultTable.size shouldBeEqualTo 5
         verify(csvTable).append(ankiCard(index = 6))
@@ -88,7 +88,7 @@ class PhraseGeneratorTest {
         enWordsQueries selectAllReturns enWords
         enWordsQueries.findByIdAlwaysReturnsTranslation()
 
-        wordsGenerator.generate(start = 1, end = 15, language = Language.PL)
+        phraseGenerator.generate(start = 1, end = 15, targetLanguage = Language.PL)
 
         resultTable.size shouldBeEqualTo 15
         verify(csvTable).append(ankiCard(index = 1))

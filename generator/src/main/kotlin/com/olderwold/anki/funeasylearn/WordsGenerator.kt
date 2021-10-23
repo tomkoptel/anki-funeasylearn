@@ -6,9 +6,14 @@ class WordsGenerator(
     private val api: ShutterStockApi
 ) {
     @Suppress("NestedBlockDepth", "TooGenericExceptionCaught", "LoopWithTooManyJumpStatements")
-    fun generate(start: Int, end: Int, language: Language = Language.PL): CSVTable {
-        val plWordsQueries = languageTable.wordsQueries(language)
-        val enWordsQueries = languageTable.wordsQueries(Language.EN)
+    fun generate(
+        start: Int,
+        end: Int,
+        targetLanguage: Language = Language.PL,
+        assistingLanguage: Language = Language.EN,
+    ): CSVTable {
+        val plWordsQueries = languageTable.wordsQueries(targetLanguage)
+        val enWordsQueries = languageTable.wordsQueries(assistingLanguage)
         val felWordsQueries = languageTable.felQueries()
         val csvTable = csvTableFactory.create(start, end)
         val plWords = plWordsQueries.selectAll().executeAsList()
