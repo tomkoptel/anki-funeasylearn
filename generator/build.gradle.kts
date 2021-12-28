@@ -24,7 +24,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.google.code.gson:gson:2.8.9")
 
-    implementation("com.squareup.sqldelight:sqlite-driver:1.5.2")
+    implementation("com.squareup.sqldelight:sqlite-driver:1.5.3")
 
     implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.2.0")
 
