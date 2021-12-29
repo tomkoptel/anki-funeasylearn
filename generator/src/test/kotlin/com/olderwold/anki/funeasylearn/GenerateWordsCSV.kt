@@ -291,6 +291,12 @@ class GenerateWordsCSV {
 
     @Test
     @OkReplay
+    fun words_hu_861_880() {
+        generateWords(start = 861, end = 880, targetLanguage = Language.HU)
+    }
+
+    @Test
+    @OkReplay
     fun words_pl_1_100() {
         generateWords(start = 1, end = 100, targetLanguage = Language.PL)
     }
@@ -505,7 +511,12 @@ class GenerateWordsCSV {
         generateWords(start = 3351, end = 3400, targetLanguage = Language.PL)
     }
 
-    private fun generateWords(start: Int, end: Int, targetLanguage: Language, assistingLanguage: Language = Language.EN) {
+    private fun generateWords(
+        start: Int,
+        end: Int,
+        targetLanguage: Language,
+        assistingLanguage: Language = Language.EN
+    ) {
         val table = wordsGenerator.generate(start, end, targetLanguage, assistingLanguage)
         val desktop = File("${System.getProperty("user.home")}${File.separator}Desktop")
         val srcPath = table.path.toPath()
