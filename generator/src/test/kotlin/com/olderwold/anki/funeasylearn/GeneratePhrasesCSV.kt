@@ -79,8 +79,20 @@ class GeneratePhrasesCSV {
         generatePhrases(start = 61, end = 70, targetLanguage = Language.HU)
     }
 
-    private fun generatePhrases(start: Int, end: Int, targetLanguage: Language = Language.PL, assistingLanguage: Language = Language.EN) {
-        val table: CSVTable = phraseGenerator.generate(start, end, targetLanguage, assistingLanguage)
+    @Test
+    @OkReplay
+    fun phrases_hu_71_80() {
+        generatePhrases(start = 71, end = 80, targetLanguage = Language.HU)
+    }
+
+    private fun generatePhrases(
+        start: Int,
+        end: Int,
+        targetLanguage: Language = Language.PL,
+        assistingLanguage: Language = Language.EN
+    ) {
+        val table: CSVTable =
+            phraseGenerator.generate(start, end, targetLanguage, assistingLanguage)
         val desktop = File("${System.getProperty("user.home")}${File.separator}Desktop")
         val srcPath = table.path.toPath()
         if (desktop.exists()) {
