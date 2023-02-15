@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4.20"
     id("org.jlleitschuh.gradle.ktlint") version "11.2.0"
-    id("io.gitlab.arturbosch.detekt") version "1.21.0"
+    id("io.gitlab.arturbosch.detekt") version "1.22.0"
     id("com.github.gmazzo.buildconfig") version "3.1.0"
 }
 
@@ -13,7 +13,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.squareup.sqldelight:gradle-plugin:1.5.4")
+        classpath("com.squareup.sqldelight:gradle-plugin:1.5.5")
     }
 }
 
