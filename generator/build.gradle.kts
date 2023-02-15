@@ -22,13 +22,13 @@ dependencies {
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     implementation("com.squareup.sqldelight:sqlite-driver:1.5.4")
 
-    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.6.0")
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.8.0")
 
-    testImplementation("org.amshove.kluent:kluent:1.68")
+    testImplementation("org.amshove.kluent:kluent:1.72")
     testImplementation("org.mockito:mockito-inline:4.8.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
     testImplementation("com.airbnb.okreplay:okreplay:1.6.0")
