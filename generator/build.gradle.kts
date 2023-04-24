@@ -17,7 +17,7 @@ dependencies {
     implementation(project(":phrases"))
     implementation(project(":fel-words"))
 
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
